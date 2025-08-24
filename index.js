@@ -4,10 +4,19 @@ const bodyParser = require("body-parser");
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const links = require("./driveLinks.json");
+const cors = require("cors");
 
 const app = express();
 app.use(bodyParser.json());
 const PORT = process.env.X_ZOHO_CATALYST_LISTEN_PORT || 5500;
+
+app.use(cors({
+  origin: "https://www.genius-minds.co.in",
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  exposedHeaders: ["x-rtb-fingerprint-id"]
+}));
+
 
 app.post("/create", async (req, res) => {
   try {
