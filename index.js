@@ -107,7 +107,7 @@ app.post("/payment", async (req, res) => {
     });
 
     await transporter.sendMail({
-      from: `"Mock Test Ninja" <${process.env.MAIL_USER}>`,
+      from: `"Genius Minds" <${process.env.MAIL_USER}>`,
       to: email,
       subject: `${course} Notes & Papers`,
       html: `<p>Dear ${name},</p>
